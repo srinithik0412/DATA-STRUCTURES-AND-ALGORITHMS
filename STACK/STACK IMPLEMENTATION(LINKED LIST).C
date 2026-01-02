@@ -6,43 +6,30 @@ struct node {
     struct node *next;
 };
 
-struct node *head = NULL;
+struct node *top = NULL;
 
-void append(int data)
-{
-    struct node *newnode = malloc(sizeof(struct node));
+int main() {
+    int n, value;
 
-    newnode->data = data;
-    newnode->next = head;
-    head = newnode;
-}
-
-void display()
-{
-    struct node *temp = head;
-    while (temp != NULL)
-    {
-        printf("%d ", temp->data);
-        temp = temp->next;
-    }
-}
-
-int main()
-{
-    int n, data;
-
-    printf("Enter no of nodes: ");
+    printf("Enter number of elements to push: ");
     scanf("%d", &n);
 
-    for (int i = 0; i < n; i++)
-    {
-        scanf("%d", &data);
-        if (data > 0)
-        {
-            append(data);
-        }
+    for (int i = 0; i < n; i++) {
+        struct node *newNode = malloc(sizeof(struct node));
+        printf("Enter value %d: ", i + 1);
+        scanf("%d", &value);
+
+        newNode->data = value;
+        newNode->next = top;
+        top = newNode;   // push
     }
 
-    printf("The data in the nodes are: ");
-    display();
+    printf("\nStack stored using linked list:\n");
+    struct node *temp = top;
+    while (temp != NULL) {
+        printf("%d\n", temp->data);
+        temp = temp->next;
+    }
+
+    return 0;
 }

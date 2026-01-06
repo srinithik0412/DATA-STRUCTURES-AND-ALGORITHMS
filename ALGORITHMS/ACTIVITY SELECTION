@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    printf("Enter no of act:");
+    scanf("%d",&n);
+    int start[n],finish[n];
+    for(int i = 0 ; i<n ; i++)
+    {
+        printf("Enter start and finish time for activity %d: ",i);
+        scanf("%d %d",&start[i],&finish[i]);
+    }
+    int lastFinish = finish[0];
+    printf("\nSelected activities:\n");
+    printf("Activity 0 (Start = %d , Finish = %d)\n",start[0],finish[0]);
+    
+    for(int i = 1; i<n ; i++){
+        if(start[i]>=lastFinish){
+            printf("Activity %d (start=%d , finish = %d)\n",i,start[i],finish[i]);
+            lastFinish = finish[i];
+        }
+    }
+    return 0;
+}
